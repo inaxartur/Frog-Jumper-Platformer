@@ -6,10 +6,10 @@
 distance = -320.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w1isw"]
-distance = -160.0
+distance = -158.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_if24v"]
-distance = -159.94
+distance = -157.94
 
 [node name="MainCamera" type="Camera2D" unique_id=1995505567]
 zoom = Vector2(2, 2)
@@ -31,4 +31,5 @@ position = Vector2(0.06, 0)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_if24v")
 
+[connection signal="area_entered" from="GameOverArea" to="." method="_on_game_over_area_area_entered"]
 [connection signal="body_entered" from="GameOverArea" to="." method="_on_game_over_area_body_entered"]

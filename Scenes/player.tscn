@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cxit56cccrso4" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bp3wmqx6rpik2" path="res://Sprites/Frog.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://csdju0b5jpifh" path="res://Sprites/JumpStrengthBarBckgrnd.png" id="3_vgqql"]
+[ext_resource type="Texture2D" uid="uid://dlcih6kq6xa8p" path="res://Sprites/JumpStrengthBar.png" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://cd0f2qbh3sk3a" path="res://Sprites/shadow.png" id="5_fkybt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(16, 30)
+size = Vector2(12, 30)
 
 [node name="Player" type="CharacterBody2D" unique_id=341493166]
 script = ExtResource("1_cvnsp")
@@ -14,8 +17,36 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_vgqql")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=71482905]
-z_index = 2
+z_index = 3
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(1, -16)
 texture = ExtResource("2_6t5aa")
+
+[node name="JumpStrengthBar" type="TextureProgressBar" parent="." unique_id=788714242]
+z_index = 2
+texture_filter = 1
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 25.0
+offset_bottom = -30.0
+min_value = 200.0
+max_value = 400.0
+step = 22.2
+value = 399.8
+texture_under = ExtResource("3_vgqql")
+texture_progress = ExtResource("4_fkybt")
+
+[node name="ToGroundDistance" type="RayCast2D" parent="." unique_id=1245928324]
+position = Vector2(-6, -3)
+target_position = Vector2(0, 138)
+
+[node name="ToGroundDistance" type="RayCast2D" parent="ToGroundDistance" unique_id=605531724]
+position = Vector2(12, 0)
+target_position = Vector2(0, 138)
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=1145906176]
+z_index = 2
+texture_filter = 3
+position = Vector2(0, -1)
+texture = ExtResource("5_fkybt")

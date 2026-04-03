@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cuvufq6m8dv3w"]
 
 [ext_resource type="Script" uid="uid://ctctwnlstco00" path="res://Scripts/lily_pad.gd" id="1_1lohk"]
-[ext_resource type="Texture2D" uid="uid://di6x4ko74idf2" path="res://Sprites/LilyPad.png" id="1_xtmy1"]
+[ext_resource type="Texture2D" uid="uid://cmxuggw2nutjl" path="res://Sprites/LilyPadVar_1.png" id="2_1lohk"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xtmy1"]
 b = Vector2(126, 0)
@@ -14,7 +14,7 @@ script = ExtResource("1_1lohk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=746811689]
 texture_filter = 1
-texture = ExtResource("1_xtmy1")
+texture = ExtResource("2_1lohk")
 
 [node name="LilyPadCollision" type="CollisionShape2D" parent="." unique_id=257236310]
 position = Vector2(-63, 0)

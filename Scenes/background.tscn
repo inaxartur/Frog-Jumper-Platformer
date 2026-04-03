@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dc531375lt3mx"]
+
+[ext_resource type="Script" uid="uid://bwqkl6b7fjpaa" path="res://Scripts/background.gd" id="1_pojwb"]
+[ext_resource type="Texture2D" uid="uid://do1047c7gj2u7" path="res://Sprites/vain_world_border.png" id="2_4aqey"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_splo0"]
+
+[node name="Background" type="Area2D" unique_id=1524307551]
+script = ExtResource("1_pojwb")
+
+[node name="OutOfSight" type="CollisionShape2D" parent="." unique_id=1898547980]
+position = Vector2(0, -453)
+shape = SubResource("CircleShape2D_splo0")
+
+[node name="SpriteLeft" type="Sprite2D" parent="." unique_id=299702526]
+z_index = 1
+texture_filter = 1
+position = Vector2(-146, 0)
+texture = ExtResource("2_4aqey")
+
+[node name="SpriteRight" type="Sprite2D" parent="." unique_id=1010757632]
+z_index = 1
+texture_filter = 1
+position = Vector2(146, 0)
+texture = ExtResource("2_4aqey")
+flip_h = true
