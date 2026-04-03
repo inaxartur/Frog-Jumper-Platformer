@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dcbjhobnd51cf"]
+
+[ext_resource type="Script" uid="uid://dm65vkdi6se4" path="res://Scripts/main_camera.gd" id="1_hn7o2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hn7o2"]
+distance = -320.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w1isw"]
+distance = -160.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_if24v"]
+distance = -159.94
+
+[node name="MainCamera" type="Camera2D" unique_id=1995505567]
+zoom = Vector2(2, 2)
+script = ExtResource("1_hn7o2")
+
+[node name="GameOverArea" type="Area2D" parent="." unique_id=1830283184]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverArea" unique_id=960263023]
+shape = SubResource("WorldBoundaryShape2D_hn7o2")
+
+[node name="WorldBorder" type="StaticBody2D" parent="." unique_id=200963263]
+
+[node name="WorldBorderCollisionLeft" type="CollisionShape2D" parent="WorldBorder" unique_id=187765580]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_w1isw")
+
+[node name="WorldBorderCollsionRight" type="CollisionShape2D" parent="WorldBorder" unique_id=789133424]
+position = Vector2(0.06, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_if24v")
+
+[connection signal="body_entered" from="GameOverArea" to="." method="_on_game_over_area_body_entered"]

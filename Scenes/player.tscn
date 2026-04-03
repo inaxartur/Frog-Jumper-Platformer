@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c15yvbwycckws"]
+
+[ext_resource type="Script" uid="uid://cxit56cccrso4" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bp3wmqx6rpik2" path="res://Sprites/Frog.png" id="2_6t5aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(16, 30)
+
+[node name="Player" type="CharacterBody2D" unique_id=341493166]
+script = ExtResource("1_cvnsp")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1081745691]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_vgqql")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=71482905]
+z_index = 2
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1, -16)
+texture = ExtResource("2_6t5aa")
