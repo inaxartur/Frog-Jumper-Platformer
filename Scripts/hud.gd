@@ -4,7 +4,7 @@ extends CanvasLayer
 
 var json_path = "res://highscore.json"
 
-var pointCounter : int = -1
+var pointCounter : int = 0
 var highScore : Dictionary = {
 	"highscore": 0
 }
@@ -20,7 +20,7 @@ func _on_point_gained() -> void:
 	pointCounter += 1
 	if(pointCounter > highScore.get("highscore")):
 		highScore.set("highscore", pointCounter)
-	pointLabel.text = "Highest Score: " + str(int(highScore.get("highscore"))) + "\n" + str(pointCounter)
+	pointLabel.text = "Highscore: " + str(int(highScore.get("highscore"))) + "\n" + str(pointCounter)
 
 func _on_player_die() -> void:
 	if(pointCounter == highScore.get("highscore")):

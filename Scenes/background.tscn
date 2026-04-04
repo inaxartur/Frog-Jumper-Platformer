@@ -2,8 +2,45 @@
 
 [ext_resource type="Script" uid="uid://bwqkl6b7fjpaa" path="res://Scripts/background.gd" id="1_pojwb"]
 [ext_resource type="Texture2D" uid="uid://do1047c7gj2u7" path="res://Sprites/vain_world_border.png" id="2_4aqey"]
+[ext_resource type="Texture2D" uid="uid://mphnps6jcpck" path="res://Sprites/green_wate_spritesheet.png" id="3_4aqey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_splo0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgxeb"]
+atlas = ExtResource("3_4aqey")
+region = Rect2(0, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltlj5"]
+atlas = ExtResource("3_4aqey")
+region = Rect2(640, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rymcx"]
+atlas = ExtResource("3_4aqey")
+region = Rect2(1280, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42s4r"]
+atlas = ExtResource("3_4aqey")
+region = Rect2(1920, 0, 640, 960)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kopta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgxeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltlj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rymcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42s4r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Background" type="Area2D" unique_id=1524307551]
 script = ExtResource("1_pojwb")
@@ -24,3 +61,11 @@ texture_filter = 1
 position = Vector2(146, 0)
 texture = ExtResource("2_4aqey")
 flip_h = true
+
+[node name="Water" type="AnimatedSprite2D" parent="." unique_id=865972147]
+z_index = -1
+texture_filter = 1
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_kopta")
+autoplay = "default"
+frame_progress = 0.3056886

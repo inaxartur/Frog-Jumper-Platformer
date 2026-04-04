@@ -6,10 +6,10 @@
 distance = -320.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w1isw"]
-distance = -158.0
+distance = -155.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_if24v"]
-distance = -157.94
+distance = -154.94
 
 [node name="MainCamera" type="Camera2D" unique_id=1995505567]
 zoom = Vector2(2, 2)

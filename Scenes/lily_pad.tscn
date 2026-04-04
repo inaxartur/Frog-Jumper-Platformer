@@ -2,19 +2,117 @@
 
 [ext_resource type="Script" uid="uid://ctctwnlstco00" path="res://Scripts/lily_pad.gd" id="1_1lohk"]
 [ext_resource type="Texture2D" uid="uid://cmxuggw2nutjl" path="res://Sprites/LilyPadVar_1.png" id="2_1lohk"]
+[ext_resource type="Texture2D" uid="uid://c4i8sevyd38qe" path="res://Sprites/LilyPadVar_2.png" id="3_nrwph"]
+[ext_resource type="Texture2D" uid="uid://y4w5waf5g3ly" path="res://Sprites/LilyPadVar_3.png" id="4_xl26g"]
+[ext_resource type="Texture2D" uid="uid://qu16y3kmtbe6" path="res://Sprites/LilyPadVar_4.png" id="5_ww2tq"]
+[ext_resource type="Texture2D" uid="uid://x6v4x53ybovg" path="res://Sprites/log_spritesheet.png" id="6_5lqdx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsjpi"]
+atlas = ExtResource("6_5lqdx")
+region = Rect2(0, 0, 144, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i13v0"]
+atlas = ExtResource("6_5lqdx")
+region = Rect2(144, 0, 144, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqvs7"]
+atlas = ExtResource("6_5lqdx")
+region = Rect2(288, 0, 144, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqrsv"]
+atlas = ExtResource("6_5lqdx")
+region = Rect2(432, 0, 144, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuhxy"]
+atlas = ExtResource("6_5lqdx")
+region = Rect2(576, 0, 144, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5btx3"]
+atlas = ExtResource("6_5lqdx")
+region = Rect2(720, 0, 144, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o21n"]
+atlas = ExtResource("6_5lqdx")
+region = Rect2(864, 0, 144, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xl6em"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1lohk")
+}],
+"loop": true,
+"name": &"var_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nrwph")
+}],
+"loop": true,
+"name": &"var_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xl26g")
+}],
+"loop": true,
+"name": &"var_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ww2tq")
+}],
+"loop": true,
+"name": &"var_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsjpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i13v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqvs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqrsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuhxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5btx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o21n")
+}],
+"loop": true,
+"name": &"var_log",
+"speed": 5.0
+}]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xtmy1"]
 b = Vector2(126, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1lohk"]
-distance = -25.0
+distance = -31.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1lohk"]
+a = Vector2(63, 0.5)
+b = Vector2(-63, 0.5)
 
 [node name="LilyPad" type="StaticBody2D" unique_id=700626862]
 script = ExtResource("1_1lohk")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=746811689]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=474396510]
 texture_filter = 1
-texture = ExtResource("2_1lohk")
+sprite_frames = SubResource("SpriteFrames_xl6em")
+animation = &"var_1"
 
 [node name="LilyPadCollision" type="CollisionShape2D" parent="." unique_id=257236310]
 position = Vector2(-63, 0)
@@ -27,4 +125,13 @@ one_way_collision = true
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_1lohk")
 
+[node name="PlayerOnLilyPadArea" type="Area2D" parent="." unique_id=345809403]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerOnLilyPadArea" unique_id=2031927645]
+position = Vector2(0, -1.5)
+rotation = 3.1415927
+shape = SubResource("SegmentShape2D_1lohk")
+
 [connection signal="body_entered" from="PlayerPointArea" to="." method="_on_player_point_area_body_entered"]
+[connection signal="body_entered" from="PlayerOnLilyPadArea" to="." method="_on_player_on_lily_pad_area_body_entered"]
+[connection signal="body_exited" from="PlayerOnLilyPadArea" to="." method="_on_player_on_lily_pad_area_body_exited"]
