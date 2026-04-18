@@ -1,23 +1,23 @@
 extends Camera2D
 
-const cameraSpeed : float = 0.075
+const CAMERA_SPEED : float = 0.075
 
 @export var Player : CharacterBody2D
 
 @onready var LilyPadScene : PackedScene = load("res://Scenes/lily_pad.tscn")
-var LilyPadNode : Node2D = null
+var lilyPadNode : Node2D = null
 var isPlayerDead : bool = false
 var currScore : float = 1
 
 func _ready() -> void:
-	LilyPadNode = LilyPadScene.instantiate()
+	lilyPadNode = LilyPadScene.instantiate()
 
 func _process(delta: float) -> void:
 	if(!isPlayerDead):
 		if(Player.position.y < position.y):
 			position.y = Player.position.y
 		else:
-			position.y -= log(currScore) * cameraSpeed
+			position.y -= log(currScore) * CAMERA_SPEED
 
 func _on_game_over_area_body_entered(body: Node2D) -> void:	
 	print(body)

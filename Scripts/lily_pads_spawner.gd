@@ -1,9 +1,10 @@
 extends Node
 
-var lastLilyPadHeight : int = 0
-
-var lilyPadAmmount : int = 15
 const LILY_PAD_DISTANCE : int = 60
+
+var lastLilyPadHeight : int = 0
+var lilyPadCurrAmmount : int = 15
+
 
 @onready var LilyPadScene : PackedScene = load("res://Scenes/lily_pad.tscn")
 
@@ -11,9 +12,9 @@ func _ready() -> void:
 	SignalBus.lilyPadFree.connect(_on_lilypad_free)
 
 func _process(delta: float) -> void:
-	if(lilyPadAmmount > 0):
+	if(lilyPadCurrAmmount > 0):
 		spawn()
-		lilyPadAmmount -= 1
+		lilyPadCurrAmmount -= 1
 
 func spawn() -> void:
 	var LilyPadNode : Node2D = LilyPadScene.instantiate()
@@ -24,4 +25,4 @@ func spawn() -> void:
 	lastLilyPadHeight = LilyPadNode.global_position.y
 
 func _on_lilypad_free() -> void:
-	lilyPadAmmount += 1
+	lilyPadCurrAmmount += 1

@@ -9,6 +9,7 @@ const JUMP_DIRECTION_STRENGTH : float = 0.4
 @onready var GroundRayCast : RayCast2D = $ToGroundDistance
 @onready var JumpBar : TextureProgressBar = $JumpStrengthBar
 @onready var ShadowSprite : Sprite2D = $ShadowSprite
+
 var jumpStrength : float = DEFAULT_JUMP_VELOCITY
 var isJumping : bool = false
 var isOnFloatingLog : bool = false

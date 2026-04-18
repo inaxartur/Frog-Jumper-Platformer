@@ -1,5 +1,9 @@
 extends StaticBody2D
 class_name LilyPad
+
+const FLOATING_LOG_SPEED : float = 0.4
+const NORMAL_LILY_PAD_PERCENTAGE : int = 95
+
 var isPointGained : bool = false
 var isFloatingLog : bool = false
 var playerOnFloatingLog : bool = false
@@ -8,7 +12,7 @@ var textures := ["var_1", "var_2", "var_3", "var_4"]
 var texturesAmmount : int = textures.size()
 
 func _ready() -> void:
-	if(randi_range(0, 100) < 95):
+	if(randi_range(0, 100) < NORMAL_LILY_PAD_PERCENTAGE):
 		if(randi_range(0, 1) == 1):
 			$Sprite2D.flip_h = true
 		else:
@@ -45,7 +49,7 @@ func despawn() -> void:
 
 func floating_log() -> void:
 	$Sprite2D.position.y = 15
-	global_position.x -= 0.15
+	global_position.x -= FLOATING_LOG_SPEED
 	if(global_position.x < -230):
 		global_position.x = 230 + randi_range(0, 50)
 

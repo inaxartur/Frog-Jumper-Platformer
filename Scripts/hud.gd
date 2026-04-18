@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var pointLabel : Label = $PointCounterLabel
 
-var json_path = "res://highscore.json"
+const JSON_PATH_HIGHSCORE = "res://highscore.json"
 
 var pointCounter : int = 0
 var highScore : Dictionary = {
@@ -14,6 +14,7 @@ func _ready() -> void:
 	SignalBus.playerDied.connect(_on_player_die)
 	pointLabel.text = str(pointCounter)
 	highScore = load_json_file()
+	pointLabel.text = "Highscore: " + str(int(highScore.get("highscore"))) + "\n" + str(pointCounter)
 
 
 func _on_point_gained() -> void:
@@ -27,8 +28,8 @@ func _on_player_die() -> void:
 		write_json_file(highScore)
 
 func load_json_file():
-	var file = FileAccess.open(json_path, FileAccess.READ)
-	assert(file.file_exists(json_path), "File path does not exists.")
+	var file = FileAccess.open(JSON_PATH_HIGHSCORE, FileAccess.READ)
+	assert(file.file_exists(JSON_PATH_HIGHSCORE), "File path does not exists.")
 	
 	var json = file.get_as_text()
 	var json_object = JSON.new()
@@ -40,7 +41,7 @@ func load_json_file():
 
 func write_json_file(data: Dictionary):
 	print("Writing to json")
-	var file = FileAccess.open(json_path, FileAccess.ModeFlags.WRITE)
+	var file = FileAccess.open(JSON_PATH_HIGHSCORE, FileAccess.ModeFlags.WRITE)
 	
 	if file:
 		var json_text = JSON.stringify(data, "\t")
